@@ -19,6 +19,7 @@
         <activity android:name=".DataSuaraActivity" />
         <activity android:name=".DataSiswaActivity" />
         <activity android:name=".DataCalonKetuaActivity" />
+        <activity android:name=".SiswaDataCalonKetuaActivity" />
         <activity android:name=".RegistrasiActivity" />
         <activity android:name=".HomepageSiswa" />
         <activity android:name=".HomepageAdmin" />

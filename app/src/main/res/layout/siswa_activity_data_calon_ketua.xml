@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bg_angel"
+    android:layout_width="match_parent"
+    tools:context=".SiswaDataCalonKetuaActivity"
+    android:layout_height="match_parent">
+    <TextView
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="49dp"
+        android:layout_marginTop="49dp"
+        android:text="Data Calon \n Ketua Osis"
+        android:layout_marginStart="49dp"/>
+    <ImageView
+        android:id="@+id/ic"
+        android:layout_width="192dp"
+        android:layout_height="117dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginRight="49dp"
+        android:src="@drawable/ic_atas"
+        android:layout_below="@+id/rl"
+        android:layout_alignParentRight="true"
+        android:contentDescription="@string/todo"
+        android:layout_marginEnd="49dp"
+        android:layout_alignParentEnd="true"
+        tools:ignore="UnknownIdInLayout" />
+    <RelativeLayout
+        android:id="@+id/bg_menu"
+        android:background="@drawable/bg_angel_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/ic">
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="250dp" style="?android:attr/progressBarStyle"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recylerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="20dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+    </RelativeLayout>
+</RelativeLayout>

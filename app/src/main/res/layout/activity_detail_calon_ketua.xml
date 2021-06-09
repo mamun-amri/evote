@@ -204,7 +204,7 @@
                         android:layout_width="70dp"
                         android:layout_height="20dp"
                         android:text="kembali"
-                        android:textAllCaps="false" app:backgroundTint="@color/btn"/>
+                        android:textAllCaps="false"/>
                 </LinearLayout>
             </LinearLayout>
             <ImageView
