@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "665197516119",
+    "firebase_url": "https://project-b4a53-default-rtdb.firebaseio.com",
+    "project_id": "project-b4a53",
+    "storage_bucket": "project-b4a53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665197516119:android:9c42dff82ebcd60716da12",
+        "android_client_info": {
+          "package_name": "com.example.evoting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "665197516119-v4lhmb6kkqeudsigv7lbmlr2ojlfl4m4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiVVb_RvyisqM6WY4PsBs7nsLTbPj-gRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "665197516119-v4lhmb6kkqeudsigv7lbmlr2ojlfl4m4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665197516119:android:41ba56c23457e91516da12",
+        "android_client_info": {
+          "package_name": "com.irsyad.evote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "665197516119-q8gm16bdk781st698sbkcnhl01cj4agn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.irsyad.evote",
+            "certificate_hash": "94f83f1f65c3c7c0b05a0c6a6c34e08b06b096a6"
+          }
+        },
+        {
+          "client_id": "665197516119-v4lhmb6kkqeudsigv7lbmlr2ojlfl4m4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiVVb_RvyisqM6WY4PsBs7nsLTbPj-gRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "665197516119-v4lhmb6kkqeudsigv7lbmlr2ojlfl4m4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665197516119:android:59eeffb6b4bce51c16da12",
+        "android_client_info": {
+          "package_name": "com.mamunamri.evotingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "665197516119-v4lhmb6kkqeudsigv7lbmlr2ojlfl4m4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiVVb_RvyisqM6WY4PsBs7nsLTbPj-gRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "665197516119-v4lhmb6kkqeudsigv7lbmlr2ojlfl4m4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Evoting App</string>
+    <string name="todo">todo</string>
+    <string name="selamat_datang">Selamat Datang</string>
+    <string name="nisn">Nisn</string>
+    <string name="sandi">Sandi</string>
+    <string name="masuk">Masuk</string>
+    <string name="daftar">Daftar</string>
+    <string name="data_suara">Data Suara</string>
+    <string name="data_siswa">Data Siswa</string>
+    <string name="info_pembuat">Info Pembuat</string>
+    <string name="data_calon_n_ketua_osis">Data Calon Ketua Osis</string>
+    <string name="pilih_photo">Pilih Photo</string>
+    <string name="nama">Nama</string>
+
+    <array name="list_is_aktif">
+        <item>aktif</item>
+        <item>tidak aktif</item>
+    </array>
+    <array name="list_jk">
+        <item>laki-laki</item>
+        <item>perempuan</item>
+    </array>
+    <array name="list_kelas">
+        <item>kelas vii</item>
+        <item>kelas viii</item>
+        <item>kelas ix</item>
+    </array>
+    <array name="list_level">
+        <item>siswa</item>
+        <item>admin</item>
+    </array>
+</resources>

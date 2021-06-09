@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mamunamri.evotingapp">
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.EvotingApp"
+        >
+        <activity android:name=".SiswaListDataSiswaActivity"/>
+        <activity android:name=".SiswaDataSiswaActivity" />
+        <activity android:name=".TambahDataSiswaActivity" />
+        <activity android:name=".TambahDataCalonKetuaActivity" />
+        <activity android:name=".PemilihanActivity" />
+        <activity android:name=".InfoPembuatActivity" />
+        <activity android:name=".DetailCalonKetuaActivity" />
+        <activity android:name=".DataSuaraActivity" />
+        <activity android:name=".DataSiswaActivity" />
+        <activity android:name=".DataCalonKetuaActivity" />
+        <activity android:name=".RegistrasiActivity" />
+        <activity android:name=".HomepageSiswa" />
+        <activity android:name=".HomepageAdmin" />
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
