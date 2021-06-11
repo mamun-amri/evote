@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="49dp"
         android:layout_marginTop="49dp"
-        android:text="Data Calon \10Ketua Osis"
+        android:text="Detail Calon \n Ketua Osis"
         android:layout_marginStart="49dp"/>
     <ImageView
         android:id="@+id/ic"

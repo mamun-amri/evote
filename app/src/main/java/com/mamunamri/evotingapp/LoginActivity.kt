@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
@@ -13,8 +14,10 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import es.dmoral.toasty.Toasty
+import kotlinx.coroutines.DelicateCoroutinesApi
 
 
+@DelicateCoroutinesApi
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
 
@@ -33,6 +36,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
        }
         findViewById<Button>(R.id.btn_regist).setOnClickListener(this)
         findViewById<Button>(R.id.btn_masuk).setOnClickListener(this)
+        findViewById<CheckBox>(R.id.btn_login_show).setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -44,6 +48,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_regist -> {
                 startActivity(Intent(this, RegistrasiActivity::class.java))
                 return
+            }
+
+            R.id.btn_login_show -> {
+                showPassword()
             }
             else -> return
         }
@@ -78,6 +86,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                                                     "Aktivasi kepada Admin",
                                                     Toasty.LENGTH_SHORT
                                                 ).show()
+                                                progressBar.visibility = View.GONE
                                             }
                                             level == "admin" -> {
                                                 val session = setSession(this@LoginActivity)
@@ -101,6 +110,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                                             }
                                         }
                                     } else {
+                                        progressBar.visibility = View.GONE
                                         Toasty.error(
                                             this@LoginActivity,
                                             "Sandi Salah",
@@ -109,6 +119,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                                     }
 
                             } else {
+                                progressBar.visibility = View.GONE
                                 Toasty.error(
                                     this@LoginActivity,
                                     "Nisn Tidak Terdaftar",
@@ -124,20 +135,16 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 }
     }
 
-//    private fun showPassword() {
-//        if (((CheckBox) findViewById).isChecked()) {
-//            View findViewById2 = findViewById(R.id.et_sandi);
-//            Intrinsics.checkNotNullExpressionValue(findViewById2, "findViewById<EditText>(R.id.et_sandi)");
-//            ((EditText) findViewById2).setInputType(1);
-//            return;
-//        }
-//        val findViewById3 = findViewById<View>(R.id.et_sandi)
-//        Intrinsics.checkNotNullExpressionValue(
-//            findViewById3,
-//            "findViewById<EditText>(R.id.et_sandi)"
-//        )
-//        (findViewById3 as EditText).inputType = 129
-//    }
+    private fun showPassword() {
+        if (findViewById<CheckBox>(R.id.btn_login_show).isChecked) {
+            val findViewById2 = findViewById<EditText>(R.id.et_sandi)
+            findViewById2.inputType = 1
+            return
+        }else{
+            val findViewById2 = findViewById<EditText>(R.id.et_sandi)
+            findViewById2.inputType = 129
+        }
+    }
 
     /* access modifiers changed from: protected */
     // androidx.appcompat.app.AppCompatActivity, androidx.fragment.app.FragmentActivity, android.app.Activity

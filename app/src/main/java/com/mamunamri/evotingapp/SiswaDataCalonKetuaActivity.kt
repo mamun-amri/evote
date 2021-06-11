@@ -7,13 +7,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.database.*
-import com.google.firebase.storage.FirebaseStorage
 import com.mamunamri.evotingapp.data.DataChart
 import com.mamunamri.evotingapp.data.DataKetua
 import com.mamunamri.evotingapp.data.DataSuara
@@ -43,10 +41,6 @@ class SiswaDataCalonKetuaActivity : AppCompatActivity() {
             val progressBar : ProgressBar = findViewById(R.id.progressBar)
             progressBar.visibility = View.GONE
             fetchData()
-            findViewById<TextView>(R.id.btn_tambah).setOnClickListener{
-                startActivity(Intent(this,TambahDataCalonKetuaActivity::class.java))
-                finish()
-            }
         }catch (e : Exception){
 
         }
@@ -59,6 +53,7 @@ class SiswaDataCalonKetuaActivity : AppCompatActivity() {
         FirebaseDatabase.getInstance().getReference("evote/calon_ketua")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
+                    adapter.clear()
                     if (snapshot.exists()) {
                         snapshot.children.forEach {
                             val data = it.getValue(DataKetua::class.java)
@@ -68,6 +63,7 @@ class SiswaDataCalonKetuaActivity : AppCompatActivity() {
                         }
                         val recyclerView = findViewById<RecyclerView>(R.id.recylerview)
                         recyclerView.adapter = adapter
+                        progressBar.visibility = View.GONE
                     } else {
                         Toasty.info(this@SiswaDataCalonKetuaActivity, "Data Kosong!", Toasty.LENGTH_SHORT).show()
                     }
@@ -100,24 +96,44 @@ class SiswaDataItem(val data : DataKetua, val context: Context) : Item<GroupieVi
             val builder = AlertDialog.Builder(context)
                 .setMessage("yakin pilih ? ")
             builder.setPositiveButton("Ok", DialogInterface.OnClickListener { dialog, which ->
-                val datas = DataSuara(data.nisn,id,data.no_urut)
-                FirebaseDatabase.getInstance().getReference("evote/suara").child(data.nisn.toString()).setValue(datas)
-                    .addOnSuccessListener {
-                        FirebaseDatabase.getInstance().getReference("evote/chart").child(data.nisn.toString())
-                            .addValueEventListener(object : ValueEventListener{
-                                override fun onDataChange(snapshot: DataSnapshot) {
-                                    if (snapshot.exists()){
-                                        val count = snapshot.childrenCount.toInt()
-                                        val dataChart = DataChart(data.nama,data.nisn,data.no_urut,count)
-                                    }
-                                }
 
-                                override fun onCancelled(error: DatabaseError) {
-                                    TODO("Not yet implemented")
-                                }
-                            })
-                    }
-            })
+                FirebaseDatabase.getInstance().getReference("evote/suara").child(id.toString())
+                    .addListenerForSingleValueEvent(object : ValueEventListener{
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            if(!snapshot.exists()){
+                                val datas = DataSuara(data.nisn,id,data.no_urut)
+                                FirebaseDatabase.getInstance().getReference("evote/suara").child(id.toString()).setValue(datas)
+                                    .addOnSuccessListener {
+                                        FirebaseDatabase.getInstance().getReference("evote/suara").orderByChild("nisnKetua").equalTo(data.nisn.toString())
+                                            .addValueEventListener(object : ValueEventListener{
+                                                override fun onDataChange(snapshot: DataSnapshot) {
+                                                    if (snapshot.exists()){
+                                                        val count = snapshot.childrenCount.toInt()
+                                                        val dataChart = DataChart(data.nama,data.nisn,data.no_urut,count)
+                                                        FirebaseDatabase.getInstance().getReference("evote/chart").child(data.nisn.toString()).setValue(dataChart)
+                                                    }else{
+                                                        val count = snapshot.childrenCount.toInt()
+                                                        val dataChart = DataChart(data.nama,data.nisn,data.no_urut,count)
+                                                        FirebaseDatabase.getInstance().getReference("evote/chart").child(data.nisn.toString()).setValue(dataChart)
+                                                    }
+                                                }
+
+                                                override fun onCancelled(error: DatabaseError) {
+                                                    TODO("Not yet implemented")
+                                                }
+                                            })
+                                    }
+                            }else{
+                                Toasty.info(context, "Anda Sudah Memilih", Toasty.LENGTH_SHORT).show()
+                            }
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            TODO("Not yet implemented")
+                        }
+                    })
+
+            })//end btn psv
             builder.setNegativeButton("Batal", DialogInterface.OnClickListener { dialog, which ->
                 dialog.cancel()
             })

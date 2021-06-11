@@ -179,6 +179,7 @@ class DataSiswaActivity : AppCompatActivity(), View.OnClickListener {
                         }
                         val recyclerView = findViewById<RecyclerView>(R.id.recylerview)
                         recyclerView.adapter = adapter
+                        progressBar.visibility = View.GONE
                     } else {
                         Toasty.info(this@DataSiswaActivity, "Data Kosong!", Toasty.LENGTH_SHORT).show()
                     }
@@ -204,6 +205,7 @@ class DataSiswaActivity : AppCompatActivity(), View.OnClickListener {
                         pb.visibility = View.GONE
                         val recyclerView = findViewById<RecyclerView>(R.id.recylerview)
                         recyclerView.adapter = adapter
+                        pb.visibility = View.GONE
                     } else {
                         pb.visibility = View.GONE
                         Toasty.info(this@DataSiswaActivity, "Data Kosong!", Toasty.LENGTH_SHORT).show()

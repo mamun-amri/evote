@@ -2,6 +2,7 @@ package com.mamunamri.evotingapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextClock
 import android.widget.TextView
@@ -11,6 +12,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.mamunamri.evotingapp.data.DataKetua
+import es.dmoral.toasty.Toasty
 
 class DetailCalonKetuaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,11 +21,12 @@ class DetailCalonKetuaActivity : AppCompatActivity() {
 
         try {
             supportActionBar?.hide()
-            findViewById<TextClock>(R.id.btn_kembali).setOnClickListener {
+            findViewById<TextView>(R.id.btn_kembali).setOnClickListener {
                 onBackPressed()
             }
-            val id = intent.getStringExtra("nisninten")!!
-            fetchData(id)
+            val id = intent.getStringExtra("nisninten")
+            fetchData(id.toString())
+            Log.d("detail","$id")
         }catch (e : Exception){
 
         }
@@ -31,7 +34,7 @@ class DetailCalonKetuaActivity : AppCompatActivity() {
 
     private fun fetchData(id: String) {
         FirebaseDatabase.getInstance().getReference("evote/calon_ketua/$id")
-            .addListenerForSingleValueEvent(object : ValueEventListener{
+            .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()){
                         val data = snapshot.getValue(DataKetua::class.java)!!
@@ -44,6 +47,8 @@ class DetailCalonKetuaActivity : AppCompatActivity() {
                         Glide.with(this@DetailCalonKetuaActivity)
                             .load(data.fotouri)
                             .into(img)
+                    }else{
+                        Toasty.info(this@DetailCalonKetuaActivity, "Data $id", Toasty.LENGTH_SHORT).show()
                     }
                 }
 
